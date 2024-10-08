@@ -204,3 +204,90 @@ Funcionalidades não previstas neste escopo incluem integração com sistemas ex
 #### **7. Conclusão**
 
 Este documento define os requisitos funcionais e não funcionais que serviram como base para o desenvolvimento do Sistema de Gestão de Manutenção Preventiva e Corretiva. Ele descreve as funcionalidades necessárias para atender às demandas de gerenciamento de equipamentos e manutenções. O sistema foi validado com base nesses requisitos e está pronto para uso em ambientes de produção.
+
+### **Script SQL para Criação das Tabelas do Banco de Dados**
+
+O banco de dados foi estruturado para gerenciar equipamentos, usuários e manutenções. Abaixo segue o script SQL para a criação das tabelas principais com chaves primárias e estrangeiras.
+
+```sql
+-- Criação da tabela de Usuários
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,              -- Chave primária
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE, -- E-mail único
+    senha VARCHAR(255) NOT NULL
+);
+
+-- Criação da tabela de Equipamentos
+CREATE TABLE equipamentos (
+    id SERIAL PRIMARY KEY,              -- Chave primária
+    nome VARCHAR(100) NOT NULL,
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    ano_fabricacao INT
+);
+
+-- Criação da tabela de Manutenções
+CREATE TABLE manutencoes (
+    id SERIAL PRIMARY KEY,                  -- Chave primária
+    id_equipamento INT NOT NULL,             -- Chave estrangeira para equipamentos
+    tipo_manutencao VARCHAR(50),             -- Preventiva ou Corretiva
+    descricao TEXT NOT NULL,
+    data_agendada DATE,                      -- Data para manutenções preventivas
+    data_realizada DATE,                     -- Data para manutenções corretivas
+    CONSTRAINT fk_equipamento
+        FOREIGN KEY (id_equipamento)         -- Definição de chave estrangeira
+        REFERENCES equipamentos(id)
+        ON DELETE CASCADE
+);
+
+-- Criação de Índices para otimizar consultas
+CREATE INDEX idx_equipamento_nome ON equipamentos(nome);
+CREATE INDEX idx_usuario_email ON usuarios(email);
+
+-- Adição de dados de exemplo para testes (opcional)
+INSERT INTO usuarios (nome, email, senha) VALUES 
+('Admin', 'admin@example.com', 'senha123'),
+('João Silva', 'joao@example.com', 'senha456');
+
+INSERT INTO equipamentos (nome, marca, modelo, ano_fabricacao) VALUES
+('Compressor', 'ABC', 'XZ200', 2018),
+('Gerador', 'PowerGen', 'GT500', 2020),
+('Esteira Transportadora', 'IndMachines', 'ST300', 2015);
+
+-- Exemplo de manutenções (opcional)
+INSERT INTO manutencoes (id_equipamento, tipo_manutencao, descricao, data_agendada, data_realizada) VALUES
+(1, 'Preventiva', 'Troca de óleo e revisão', '2024-10-15', NULL),
+(2, 'Corretiva', 'Substituição de peças quebradas', NULL, '2024-08-12');
+```
+
+### **Descrição das Tabelas e Relacionamentos**
+
+1. **Tabela `usuarios`**:
+   - **id**: Chave primária única para identificar os usuários.
+   - **nome**: Nome completo do usuário.
+   - **email**: Endereço de e-mail do usuário (único).
+   - **senha**: Senha armazenada de forma segura (normalmente com hash).
+
+2. **Tabela `equipamentos`**:
+   - **id**: Chave primária única para identificar os equipamentos.
+   - **nome**: Nome do equipamento.
+   - **marca**: Marca do equipamento.
+   - **modelo**: Modelo do equipamento.
+   - **ano_fabricacao**: Ano de fabricação do equipamento.
+
+3. **Tabela `manutencoes`**:
+   - **id**: Chave primária única para identificar as manutenções.
+   - **id_equipamento**: Chave estrangeira que referencia o equipamento associado.
+   - **tipo_manutencao**: Tipo da manutenção (Preventiva ou Corretiva).
+   - **descricao**: Descrição detalhada da manutenção a ser realizada ou realizada.
+   - **data_agendada**: Data prevista para manutenções preventivas.
+   - **data_realizada**: Data em que a manutenção corretiva foi concluída.
+
+### **Considerações sobre o Banco de Dados**
+
+- **Chaves Estrangeiras**: As manutenções estão relacionadas diretamente com os equipamentos através da chave estrangeira `id_equipamento`, o que garante integridade referencial.
+- **Índices**: Foram criados índices nas colunas de pesquisa mais comuns, como o `nome` dos equipamentos e o `email` dos usuários, para otimizar as consultas.
+- **Exclusão em Cascata**: Caso um equipamento seja removido, todas as manutenções associadas a ele também serão excluídas automaticamente, devido à cláusula `ON DELETE CASCADE` na relação entre `manutencoes` e `equipamentos`. 
+
+Esse script estabelece a estrutura básica para o funcionamento do sistema, possibilitando o gerenciamento completo de usuários, equipamentos e manutenções.
