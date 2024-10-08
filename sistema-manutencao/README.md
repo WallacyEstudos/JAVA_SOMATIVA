@@ -210,13 +210,13 @@ Este documento define os requisitos funcionais e não funcionais que serviram co
 # Diagramas 
 
 ## Diagrama de Classes
-![Diagrama de Classes](./IMG/Diagrama_Classe.png)
+![Diagrama de Classes](./img/Diagrama_Classe.png)
 
 ## Diagrama de Uso
-![Diagrama de Uso](./IMG/Diagrama_Uso.png)
+![Diagrama de Uso](./img/Diagrama_Uso.png)
 
 ## Diagrama de Fluxo
-![Diagrama de Fluxo](./IMG/Diagrama_Fluxo.png)
+![Diagrama de Fluxo](./img/Diagrama_Fluxo.png)
 
 ---
 
