@@ -121,106 +121,86 @@ Se você encontrar problemas ou precisar de mais ajuda, entre em contato com o a
 
 Este manual deve cobrir a maioria das necessidades dos usuários para utilizar o **Sistema de Gestão de Manutenção Preventiva e Corretiva**.
 
-### Escopo do Projeto: Sistema de Gestão de Manutenção Preventiva e Corretiva
+### **Especificação de Requisitos do Sistema de Gestão de Manutenção Preventiva e Corretiva**
 
 ---
 
-#### 1. **Objetivo do Projeto**
+#### **1. Introdução**
 
-O objetivo do **Sistema de Gestão de Manutenção Preventiva e Corretiva** é oferecer uma solução para o controle de manutenções de equipamentos em empresas. O sistema permite cadastrar usuários, equipamentos, e manutenções, além de gerar relatórios em formato CSV. A aplicação visa melhorar o acompanhamento de manutenções, evitar falhas inesperadas e garantir que todos os registros sejam devidamente documentados.
-
----
-
-#### 2. **Funcionalidades Principais**
-
-##### 2.1 **Cadastro de Usuários**
-- **Descrição**: Permite o gerenciamento de usuários do sistema, incluindo operações como adicionar, editar, remover e listar.
-- **Requisitos**:
-  - Inserção de nome, e-mail e senha.
-  - Validação de dados.
-  - Exibição de lista com todos os usuários cadastrados.
-
-##### 2.2 **Cadastro de Equipamentos**
-- **Descrição**: Gerenciamento de equipamentos, permitindo adicionar, editar, remover e visualizar os equipamentos que precisam de manutenção.
-- **Requisitos**:
-  - Nome do equipamento, descrição, status e data de aquisição.
-  - Exibição da lista de equipamentos.
-
-##### 2.3 **Gerenciamento de Manutenções**
-- **Descrição**: Controle de manutenções corretivas e preventivas dos equipamentos, com a possibilidade de cadastrar, editar e remover manutenções.
-- **Requisitos**:
-  - Registro de manutenções preventivas (planejadas) e corretivas (emergenciais).
-  - Informações de data, descrição da manutenção, e status.
-  - Lista de manutenções por equipamento.
-
-##### 2.4 **Relatórios em CSV**
-- **Descrição**: Geração de relatórios em formato CSV dos equipamentos e manutenções registradas no sistema.
-- **Requisitos**:
-  - Relatório de equipamentos cadastrados.
-  - Relatório de manutenções realizadas, com opção de filtragem.
+Este documento descreve a especificação de requisitos para o Sistema de Gestão de Manutenção Preventiva e Corretiva. O sistema foi desenvolvido para gerenciar equipamentos e manutenções de uma empresa, permitindo o controle eficiente do ciclo de vida dos equipamentos, manutenções programadas e corretivas.
 
 ---
 
-#### 3. **Requisitos Funcionais**
+#### **2. Objetivos do Sistema**
 
-- **Cadastro de Usuários**: O sistema deve permitir o cadastro de múltiplos usuários, com operações de CRUD (Create, Read, Update, Delete).
-- **Cadastro de Equipamentos**: O sistema deve permitir o cadastro de equipamentos e associá-los a manutenções futuras.
-- **Cadastro de Manutenções**: O sistema deve permitir o registro de manutenções preventivas e corretivas para os equipamentos cadastrados.
-- **Relatórios em CSV**: O sistema deve exportar os dados de equipamentos e manutenções para arquivos CSV.
-- **Persistência de Dados**: Os dados devem ser armazenados em um banco de dados PostgreSQL.
-
----
-
-#### 4. **Requisitos Não Funcionais**
-
-- **Usabilidade**: A interface gráfica deve ser intuitiva e fácil de usar.
-- **Performance**: O sistema deve ser eficiente para lidar com o cadastro de múltiplos equipamentos e manutenções, gerando relatórios em um tempo razoável.
-- **Segurança**: O sistema deve garantir que os dados dos usuários estejam protegidos com autenticação e criptografia de senhas.
-- **Portabilidade**: O sistema deve ser executável em qualquer plataforma que suporte Java, com configuração mínima para o banco de dados PostgreSQL.
+- Facilitar o gerenciamento de equipamentos de uma empresa.
+- Permitir o controle de manutenções preventivas e corretivas.
+- Gerar relatórios detalhados sobre os equipamentos e manutenções.
+- Fornecer uma interface gráfica intuitiva para o usuário realizar operações de cadastro, atualização, consulta e remoção.
 
 ---
 
-#### 5. **Tecnologias Utilizadas**
+#### **3. Funcionalidades Principais**
 
-- **Linguagem de Programação**: Java
-- **Banco de Dados**: PostgreSQL
-- **Gerenciamento de Dependências**: Maven
-- **Biblioteca de Relatórios**: OpenCSV
-- **Interface Gráfica**: Swing
-- **Controle de Versão**: Git
+##### **3.1. Módulo de Equipamentos**
 
----
+- **Cadastro de Equipamentos**: Permitir o registro de novos equipamentos no sistema.
+  - Dados obrigatórios: ID, Nome, Marca, Modelo, Ano de Fabricação.
+- **Atualização de Equipamentos**: Possibilitar a edição dos dados dos equipamentos cadastrados.
+- **Exclusão de Equipamentos**: Permitir a exclusão de equipamentos do sistema.
+- **Consulta de Equipamentos**: Listar todos os equipamentos cadastrados ou pesquisar por nome/marca.
+- **Exportação de Equipamentos**: Gerar um relatório em formato CSV com a lista de equipamentos.
 
-#### 6. **Escopo Excluído (Out of Scope)**
+##### **3.2. Módulo de Manutenções**
 
-- Integração com APIs externas de manutenção.
-- Controle de estoque de peças.
-- Monitoramento em tempo real dos equipamentos.
-- Geração automática de alertas via e-mail ou SMS.
+- **Agendamento de Manutenção Preventiva**: Permitir que manutenções preventivas sejam agendadas para um equipamento específico.
+  - Dados: ID do equipamento, data prevista, descrição do serviço.
+- **Registro de Manutenção Corretiva**: Cadastrar manutenções corretivas de equipamentos quando ocorrerem falhas.
+  - Dados: ID do equipamento, descrição do problema, data de correção.
+- **Consulta de Manutenções**: Listar manutenções agendadas ou realizadas de acordo com o equipamento selecionado.
+- **Geração de Relatórios de Manutenção**: Gerar um relatório de manutenções por equipamento ou por período.
 
----
+##### **3.3. Módulo de Usuários**
 
-#### 7. **Cronograma Estimado**
-
-1. **Fase 1 - Definição e Planejamento** (1 semana)
-   - Definir os requisitos funcionais e não funcionais.
-   - Criar o escopo e cronograma do projeto.
-
-2. **Fase 2 - Desenvolvimento** (3 semanas)
-   - Implementação do backend (modelos e controle de dados).
-   - Implementação da interface gráfica.
-   - Integração do sistema com o banco de dados.
-
-3. **Fase 3 - Testes** (1 semana)
-   - Testes unitários dos métodos de cadastro e relatórios.
-   - Testes de integração com a interface gráfica.
-
-4. **Fase 4 - Documentação e Entrega Final** (1 semana)
-   - Finalização da documentação técnica e manual do usuário.
-   - Entrega final do código-fonte e artefatos.
+- **Cadastro de Usuários**: Permitir o registro de novos usuários no sistema.
+  - Dados obrigatórios: Nome, Email, Senha.
+- **Autenticação de Usuários**: Permitir login no sistema por meio de email e senha.
+- **Gestão de Usuários**: Administrar usuários, com permissões de cadastro, atualização e exclusão.
 
 ---
 
-#### 8. **Conclusão**
+#### **4. Requisitos Funcionais**
 
-Este escopo define os limites e objetivos do **Sistema de Gestão de Manutenção Preventiva e Corretiva**, garantindo que as funcionalidades essenciais para o controle de manutenções de equipamentos sejam implementadas de forma eficiente. O projeto busca oferecer uma solução prática e completa, que pode ser personalizada para atender às necessidades específicas de cada empresa.
+1. **Cadastro de Equipamentos**: O sistema deve permitir que o usuário cadastre novos equipamentos com informações como nome, marca, modelo e ano de fabricação.
+2. **Cadastro de Manutenções**: O sistema deve permitir agendar manutenções preventivas e registrar manutenções corretivas.
+3. **Atualização e Exclusão de Dados**: O sistema deve permitir que os usuários atualizem e excluam os registros de equipamentos e manutenções.
+4. **Relatórios**: O sistema deve gerar relatórios sobre os equipamentos e manutenções, exportáveis em CSV.
+5. **Controle de Acesso**: O sistema deve implementar um sistema de autenticação com login e senha para diferentes níveis de usuários.
+
+---
+
+#### **5. Requisitos Não Funcionais**
+
+1. **Desempenho**: O sistema deve ser capaz de processar operações de cadastro, consulta e atualização de forma eficiente, sem grandes atrasos.
+2. **Segurança**: O sistema deve garantir que somente usuários autenticados possam acessar as funcionalidades.
+3. **Usabilidade**: A interface gráfica deve ser intuitiva e fácil de usar, permitindo que os usuários realizem as tarefas sem dificuldades.
+4. **Compatibilidade**: O sistema deve ser compatível com múltiplos navegadores e sistemas operacionais.
+5. **Manutenibilidade**: O código deve ser modular e organizado, facilitando futuras manutenções e expansões.
+
+---
+
+#### **6. Escopo do Projeto**
+
+O sistema foi projetado para pequenas e médias empresas que necessitam de uma solução para gerenciar equipamentos e suas manutenções. O escopo inclui:
+- Cadastro e gerenciamento de equipamentos.
+- Controle de manutenções preventivas e corretivas.
+- Interface gráfica para interação do usuário.
+- Geração de relatórios de equipamentos e manutenções.
+
+Funcionalidades não previstas neste escopo incluem integração com sistemas externos de inventário, notificações automáticas de manutenção, ou um sistema de alerta de falhas.
+
+---
+
+#### **7. Conclusão**
+
+Este documento define os requisitos funcionais e não funcionais que serviram como base para o desenvolvimento do Sistema de Gestão de Manutenção Preventiva e Corretiva. Ele descreve as funcionalidades necessárias para atender às demandas de gerenciamento de equipamentos e manutenções. O sistema foi validado com base nesses requisitos e está pronto para uso em ambientes de produção.
