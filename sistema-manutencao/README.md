@@ -205,6 +205,21 @@ Funcionalidades não previstas neste escopo incluem integração com sistemas ex
 
 Este documento define os requisitos funcionais e não funcionais que serviram como base para o desenvolvimento do Sistema de Gestão de Manutenção Preventiva e Corretiva. Ele descreve as funcionalidades necessárias para atender às demandas de gerenciamento de equipamentos e manutenções. O sistema foi validado com base nesses requisitos e está pronto para uso em ambientes de produção.
 
+---
+
+# Diagramas 
+
+## Diagrama de Classes
+![Diagrama de Classes](./IMG/Diagrama_Classe.png)
+
+## Diagrama de Uso
+![Diagrama de Uso](./IMG/Diagrama_Uso.png)
+
+## Diagrama de Fluxo
+![Diagrama de Fluxo](./IMG/Diagrama_Fluxo.png)
+
+---
+
 ### **Script SQL para Criação das Tabelas do Banco de Dados**
 
 O banco de dados foi estruturado para gerenciar equipamentos, usuários e manutenções. Abaixo segue o script SQL para a criação das tabelas principais com chaves primárias e estrangeiras.
