@@ -1,0 +1,84 @@
+
+Class Diagram for Maintenance Management System:
+
+Classes:
+1. Usuario
+    - id: int
+    - nome: String
+    - email: String
+    - senha: String
+    + get/set methods
+
+2. Equipamento
+    - id: int
+    - nome: String
+    - marca: String
+    - modelo: String
+    - ano: int
+    + get/set methods
+
+3. Manutencao
+    - id: int
+    - equipamentoId: int
+    - descricao: String
+    - data: Date
+    + get/set methods
+
+4. RelatorioEquipamentos (CSV)
+    - generateReport(): void
+
+Relationships:
+- Usuario interacts with Equipamento and Manutencao.
+- RelatorioEquipamentos generates reports on Equipamento.
+
+
++-----------------------+
+|      Equipamento       |
++-----------------------+
+| - id: int             |
+| - nome: String        |
+| - marca: String       |
+| - modelo: String      |
+| - ano: int            |
++-----------------------+
+| + getId(): int        |
+| + getNome(): String   |
+| + getMarca(): String  |
+| + getModelo(): String |
+| + getAno(): int       |
++-----------------------+
+
+         ^
+         |
++------------------------+
+|     Manutencao         |
++------------------------+
+| - id: int              |
+| - descricao: String    |
+| - dataInicio: Date     |
+| - dataFim: Date        |
+| - status: String       |
+| - equipamento: Equip.  |
++------------------------+
+| + getId(): int         |
+| + getDescricao(): String|
+| + getDataInicio(): Date|
+| + getDataFim(): Date   |
+| + getStatus(): String  |
++------------------------+
+
+         ^
+         |
++------------------------+
+|      Usuario            |
++------------------------+
+| - id: int              |
+| - nome: String         |
+| - email: String        |
+| - senha: String        |
++------------------------+
+| + getId(): int         |
+| + getNome(): String    |
+| + getEmail(): String   |
+| + getSenha(): String   |
++------------------------+

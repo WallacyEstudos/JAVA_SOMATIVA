@@ -1,0 +1,47 @@
+
+Use Case Diagram for Maintenance Management System:
+
+Actors:
+1. User (Technician, Administrator)
+
+Use Cases:
+1. Manage Equipment
+    - Add Equipment
+    - Update Equipment
+    - Remove Equipment
+    - View Equipment List
+
+2. Manage Maintenance
+    - Schedule Maintenance
+    - Update Maintenance Record
+    - View Maintenance History
+
+3. Generate Reports
+    - Generate Equipment Report (CSV)
+    - Generate Maintenance Report (CSV)
+    
+Relationships:
+- User interacts with all use cases.
+
+
++---------------------------+
+|  Sistema de Manutenção     |
++---------------------------+
+         ^
+         |
++--------------------+       +-----------------+
+|  Administrador      |       |  Usuário        |
++--------------------+       +-----------------+
+         |                          |
+         |                          |
++----------------------+  +----------------------+
+|  Gerenciar Usuários   |  |  Visualizar Equip.   |
++----------------------+  +----------------------+
+         |                          |
++----------------------+  +----------------------+
+|  Gerenciar Manutenção |  |  Solicitar Manutenção|
++----------------------+  +----------------------+
+         |
++----------------------+
+|  Gerar Relatórios    |
++----------------------+

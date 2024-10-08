@@ -1,0 +1,47 @@
+
+Flow Diagram for Maintenance Management System:
+
+1. User logs into the system.
+2. User navigates to Equipment Management:
+    - User can add, update, or remove equipment.
+    - User can view the list of equipment.
+3. User navigates to Maintenance Management:
+    - User can schedule or update maintenance records.
+    - User can view maintenance history.
+4. User generates reports:
+    - User generates CSV reports for equipment or maintenance records.
+5. System displays feedback on actions (success or failure).
+
++----------------------------+
+|     Iniciar Sessão          |
++----------------------------+
+           |
++----------------------------+
+|   Verificar Credenciais     |
++----------------------------+
+           |
++----------------------------+
+|   Administrador Logado?     |--No---> +-----------------------+
++----------------------------+         |   Acesso Negado        |
+           |                             +-----------------------+
+          Yes
+           |
++----------------------------+
+|   Exibir Tela Principal     |
++----------------------------+
+           |
++----------------------------+
+|  Selecionar Operação:       |
+|  1. Gerenciar Usuários      |
+|  2. Gerenciar Equipamentos  |
+|  3. Gerenciar Manutenção    |
+|  4. Gerar Relatórios        |
++----------------------------+
+           |
++----------------------------+
+|    Executar Operação        |
++----------------------------+
+           |
++----------------------------+
+|         Logout              |
++----------------------------+
